@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Sistema de estacionamento</title>
+</head>
+<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jsbarcode/3.6.0/JsBarcode.all.min.js"></script>
+   
+<script type="text/javascript">
+        
+        const inf = localStorage.patio ? JSON.parse(localStorage.patio) : [];
+        const web = inf.at(-1);
+        const website = `${web.nome};${web.placa}:${web.entrada}`;
+        function generateQRCode() {
+        
+            if (website !== 0) {
+            let qrcodeContainer = document.getElementById("qrcode");
+            qrcodeContainer.innerHTML = "";
+            new QRCode(qrcodeContainer, website);
+            /*With some styles*/
+            } else {
+            alert("Please enter a valid URL");
+            }
+            
+    }
+    // var key = localStorage.getItem('patio')
+    function GerarCodigoDeBarras(){
+                /*A função JsBarcode não aceita string vazia*/
+        if(!website){
+            website = 0;
+        }
+        JsBarcode('#codBarras', website);
+    }
+    function infor(){
+        let veiculo = document.getElementById('veiculo');
+        let placa = document.getElementById('placa');
+        let entrada = document.getElementById('entrada');
+        veiculo.innerHTML = `Veículo:${web.nome}`;
+        placa.innerHTML = `Placa:${web.placa}`;
+        entrada.innerHTML = `Entrada:${web.entrada}`;
+    }
+    function limpar(){
+        window.location.reload()
+    }
+</script>
+<body>
+    <div class="box1">
+        <div>
+            <input 
+                type="text"
+                id="name"
+                placeholder="Nome do veiculo"
+                autocomplete="off"
+                class="Upper"
+            >
+            <input 
+                type="text"
+                id="licence"
+                placeholder="Placa do veiculo"
+                autocomplete="off"
+                maxlength="7"
+                class="Upper"
+                >
+                <button id="send" class="success">Registrar</button>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Veículo</th>
+                    <th>Placa</th>
+                    <th>Entrada</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="garage"></tbody>
+        </table>
+    </div>
+<div class="box2">
+    <div class="form">
+        <h1>QR Code using qrcodejs</h1>
+        <form>
+            
+            <button type="button" onclick="generateQRCode(), GerarCodigoDeBarras(), infor()">
+            Generate QR Code
+            </button>
+            <button type="button" onclick="limpar()">Limpar</button>
+        </form>
+    <div class="ticket">
+        <div class="imagem">
+            <img src="./img/Captura de Tela (512).png" alt="">
+            <p>Ticket Estacionamento</p>
+        </div>
+        <div id="infor" class="infor">
+            <div id="veiculo"></div>
+            <div id="placa"></div>
+            <div id="entrada"></div>
+        </div>
+        <div id="qrcode-container" class="qrcode">
+            <div id="qrcode" class="qrcode"></div>
+        </div>
+        <div>
+            <svg id="codBarras"></svg>
+            <p id="mensagem"></p>
+        </div>
+    </div>
+</div>
+</body>
+<script src="./index.js"></script>
+</html>

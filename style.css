@@ -1,0 +1,69 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+}
+body{
+    display: flex;
+    align-content: center;
+    
+}
+.box1{
+    overflow-y: scroll;
+    width: 50%;
+    height: 100vh;
+    border: 2px solid rgb(173, 173, 173);
+}
+.box1 div table{
+    margin-left: 15px;
+}
+.box2{
+    display: flex;
+    width: 50%;
+    height: 100vh;
+    border: 2px solid rgb(173, 173, 173);
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+
+}
+
+.ticket{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+    border: 1px solid black;
+    height: 550px;
+    width: 450px;
+}
+.ticket svg{
+    height: 190px;
+    width: 420px;
+    margin-left: 15px;
+}
+.qrcode img{
+    margin-left: 150px;
+    margin-top: 50px;
+    height: 150px;
+    width: 150px;
+}
+.infor{
+    margin-top: 10px;
+    flex-direction: column;
+    margin-left: 70px;
+}
+.imagem{
+    margin-top: 5px;
+    margin-left: 150px;
+}
+.imagem img{
+    width: 150px;
+    height: 110px;
+}
+.imagem p {
+    font-family: sans-serif;
+    margin-top: 5px;
+}
+.Upper {
+    text-transform:uppercase
+  }
