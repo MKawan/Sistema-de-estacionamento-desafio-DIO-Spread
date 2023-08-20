@@ -116,8 +116,13 @@ class Estacionamento {
       return;
     }
     
+    function dateNew(value: any) {
+      return value.toString().padStart(2, 0);
+  }
+  const dateAtual = new Date();
+  const date = dateAtual.getFullYear() + '-'+ dateNew(dateAtual.getMonth() + 1) +'-' + dateNew(dateAtual.getDate()) + 'T' + dateNew(dateAtual.getHours()) + ':'+ dateNew(dateAtual.getMinutes()) +':'+ dateNew(dateAtual.getSeconds());
 
-  const carro: Carro = { nome, placa, entrada: new Date()};
+  const carro = { nome, placa, entrada: date};
 
   estacionamento.adicionar(carro, true);
 

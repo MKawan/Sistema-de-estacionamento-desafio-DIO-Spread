@@ -14,12 +14,12 @@ class EstacionamentoFront {
                 ${carro.entrada.toLocaleString("pt-BR", {
                     hour: "numeric",
                     minute: "numeric",
-                })}
+                  })}
                 </td>
                 <td>
                     <button class="delete">x</button>
                 </td>
-    `;
+            `;
         if (salvar) {
             this.estacionamento.salvar();
         }
@@ -89,8 +89,8 @@ class Estacionamento {
             return value.toString().padStart(2, 0);
         }
         const dateAtual = new Date();
-        const date = dateAtual.getFullYear() + '-' + dateNew(dateAtual.getMonth() + 1) + '-' + dateNew(dateAtual.getDate()) + 'T' + dateNew(dateAtual.getHours()) + ':' + dateNew(dateAtual.getMinutes()) + ':' + dateNew(dateAtual.getSeconds());
-        const carro = { nome, placa, entrada: date };
+        const date = dateAtual.getFullYear() + '-'+ dateNew(dateAtual.getMonth() + 1) +'-' + dateNew(dateAtual.getDate()) + 'T' + dateNew(dateAtual.getHours()) + ':'+ dateNew(dateAtual.getMinutes()) +':'+ dateNew(dateAtual.getSeconds());
+        const carro = { nome, placa, entrada: date};
         estacionamento.adicionar(carro, true);
         $("#name").value = "";
         $("#licence").value = "";

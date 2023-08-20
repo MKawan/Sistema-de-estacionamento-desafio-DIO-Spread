@@ -13,34 +13,35 @@
         
         const inf = localStorage.patio ? JSON.parse(localStorage.patio) : [];
         const web = inf.at(-1);
-        const website = `${web.nome};${web.placa}:${web.entrada}`;
+        const qrcode = `${web.nome}:${web.placa}:${web.entrada}`;
         function generateQRCode() {
         
-            if (website !== 0) {
+            if (qrcode !== 0) {
             let qrcodeContainer = document.getElementById("qrcode");
             qrcodeContainer.innerHTML = "";
-            new QRCode(qrcodeContainer, website);
+            new QRCode(qrcodeContainer, qrcode);
             /*With some styles*/
             } else {
-            alert("Please enter a valid URL");
+            alert("Prorfavor adicione dados validos.");
             }
             
     }
     // var key = localStorage.getItem('patio')
     function GerarCodigoDeBarras(){
+        const codBarras= `${web.entrada}`;
                 /*A função JsBarcode não aceita string vazia*/
-        if(!website){
-            website = 0;
+        if(!codBarras){
+            codBarras = 0;
         }
-        JsBarcode('#codBarras', website);
+        JsBarcode('#codBarras', codBarras);
     }
     function infor(){
         let veiculo = document.getElementById('veiculo');
         let placa = document.getElementById('placa');
         let entrada = document.getElementById('entrada');
-        veiculo.innerHTML = `Veículo:${web.nome}`;
-        placa.innerHTML = `Placa:${web.placa}`;
-        entrada.innerHTML = `Entrada:${web.entrada}`;
+        veiculo.innerHTML = `Veículo: ${web.nome}`;
+        placa.innerHTML = `Placa: ${web.placa}`;
+        entrada.innerHTML = `Entrada: ${web.entrada}`;
     }
     function limpar(){
         window.location.reload()
@@ -80,11 +81,11 @@
     </div>
 <div class="box2">
     <div class="form">
-        <h1>QR Code using qrcodejs</h1>
+        <h1>Gerar Ticket-Estacionamento</h1>
         <form>
             
             <button type="button" onclick="generateQRCode(), GerarCodigoDeBarras(), infor()">
-            Generate QR Code
+            Gerar Ticket
             </button>
             <button type="button" onclick="limpar()">Limpar</button>
         </form>
