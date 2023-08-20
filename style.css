@@ -43,11 +43,12 @@ body{
 }
 .qrcode img{
     margin-left: 150px;
-    margin-top: 50px;
-    height: 150px;
-    width: 150px;
+    margin-top: 40px;
+    height: 130px;
+    width: 130px;
 }
 .infor{
+    text-transform:uppercase;
     margin-top: 10px;
     flex-direction: column;
     margin-left: 70px;
